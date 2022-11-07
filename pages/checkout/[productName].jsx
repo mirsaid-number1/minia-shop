@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import {useRouter} from 'next/router';
 import {useSelector} from 'react-redux';
 import style from '../../styles/product/Product.module.scss';
-import type { RootState } from '../../store';
 import Navbar from '../../components/Navbar';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import Sidebar from '../../components/Sidebar';
@@ -20,23 +19,18 @@ import KeyboardArrowDownTwoToneIcon from '@mui/icons-material/KeyboardArrowDownT
 import Confetti from 'react-confetti';
 
 
-type Props = {}
-
-function Product({}: Props) {
+function Product({}) {
     const router = useRouter();
     const {productName} = router.query;
-    let product = useSelector((state:RootState) => state.product);
+    let product = useSelector((state) => state.product);
     let [longivity,setLongivity] = useState(3);
     let [continueSeeMore,setContinueSeeMore] = useState(false);
     let [finished,setFinished] = useState(false);
     let sizes = useWindowSize();
     
     function useWindowSize() {
-      type windowType = {
-          width:number,
-          height:number
-      }
-      const [windowSize, setWindowSize] = useState<windowType>({
+
+      const [windowSize, setWindowSize] = useState({
         width: 0,
         height: 0,
       });
@@ -61,7 +55,6 @@ function Product({}: Props) {
         alert('Вы успешно совершили покупку');
       } 
       return () => {
-        clearTimeout();
       }
     },[finished])
     console.log(product);
@@ -90,9 +83,9 @@ function Product({}: Props) {
             </div>
             <div className={style.aboutDevice}>
               <div className={style.carusel}>
-                    <Carousel enableAutoPlay initialActiveIndex={0} autoPlaySpeed={15000} breakPoints={breakPoints}  showArrows={false}>
+                    <Carousel enableAutoPlay={true} initialActiveIndex={0} autoPlaySpeed={15000} breakPoints={breakPoints}>
                         {product.imgsCollection.map((image,index) => (
-                          <Item maxWidth="100%" className={style.carusel_card} key={index}>
+                          <Item className={style.carusel_card} key={index}>
                             <Image src={image} alt="img" key={index}/>
                           </Item>) 
                       )}
