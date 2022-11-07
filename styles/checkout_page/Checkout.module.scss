@@ -1,0 +1,102 @@
+@use '../resource.scss';
+
+@media screen and (max-width:1300px) {
+    .container{
+        --container-margin:0 10px;
+    }
+}
+
+.checkout{
+    display: flex;
+    flex-direction: column;
+
+    .main{
+        display: flex;
+
+        .container{
+            height: auto;
+            width: 100%;
+            margin: var(--container-margin,10px);
+            padding: 5px 20px;
+            background-color: resource.$light-grey-color;
+            border-radius: 5px;
+
+            .directory{
+                display: flex;
+                align-items: center;
+                font-size:14px;
+                animation-name: FadeOthers;
+                animation-duration: 1s;
+
+                .prev{
+                    color:lightgray;
+                    transition: 200ms;
+                    text-decoration: none;
+
+                    &:hover{
+                        color: resource.$green-color;
+                    }
+                }
+                .current{
+                    text-decoration: none;
+                    color:resource.$green-color;
+                }
+                .arrow{
+                    color:lightgrey;
+                    width: 15px;
+                }
+            }
+
+            .header{
+                font-weight: 600;
+                color:resource.$blue-color;
+                animation-name: FadeOthers;
+                animation-duration: 1.2s;
+            }
+
+            .search_form{
+                display: flex;
+                width: 100%;
+                background-color: white;
+                border-radius: 25px;
+                height: 50px;
+                animation-name: FadeOthers;
+                animation-duration: 1.4s;
+
+                .search_input{
+                    margin-left: 20px;
+                    flex: 8;
+                    border: none;
+                    outline: none;
+                    font-size: 18px;
+                    color: grey;
+                }
+
+                .search_btn{
+                    flex: 1;
+                    background-color: resource.$green-color;
+                    color: white;
+                    border-radius:  0 25px 25px 0;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+
+            h3{
+                animation-name: FadeOthers;
+                animation-duration: 1.6s;
+            }
+
+            @keyframes FadeOthers {
+                from{
+                    transform: translateX(100%);
+                    opacity:0;
+                };
+                to{
+                    transform: translateX(0%);
+                    opacity:1;
+                }
+            }
+        }
+    }
+}

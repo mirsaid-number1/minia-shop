@@ -1,0 +1,211 @@
+@use '../resource.scss';
+
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    transform: translate(0%);
+    transition: 200ms ease-in-out;
+  
+    @keyframes fadeUp {
+        from{
+            transform: translateY(100%);
+            opacity: 0;
+        };
+        to{
+            transform: translateY(0%);
+            opacity: 1;
+        }
+    }
+
+    .product{
+        display: flex;
+        height: auto;
+        width: 190px;
+        flex-direction: column;
+        background-color: white;
+        padding: 10px;
+        transition: 200ms ease-in-out;
+        border-radius: 15px;
+        cursor: pointer;
+
+        .img_part{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: resource.$light-grey-color;
+            border-radius: 15px;
+
+            .labels{
+                position: absolute;   
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                left: 10px;
+                top: 10px;
+
+                
+                @mixin label($bg-color: DarkGray) {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40px;
+                    height: 28px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    transition: 200ms ease-in-out;
+                    background-color: $bg-color;
+                    
+                    &:hover{
+                        transform: scale(1.1);
+                        box-shadow: 0 0 2px 2px $bg-color;
+                    }
+                  }
+
+                .label_exchange {
+                    @include label(resource.$pink-color);
+                }
+
+                .label_surprise{
+                    @include label(resource.$light-purple-color);
+                }
+
+                .label_greenPercent{
+                    @include label(resource.$light-green-color);
+                }
+
+                .label_orangePercent{
+                    @include label(resource.$light-orange-color);
+                }
+            }
+        }
+
+        .details_part{
+            .name{
+                font-size: 17px;
+                font-weight: 400;
+            }
+            .real_price{
+                font-size: 17px;
+                font-weight: 700;
+            }
+            .add_price{
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                color:lightgray;
+                font-size: 14px;
+
+                b{
+                    background-color: resource.$light-red-color;
+                    font-size: 16px;
+                    color: white;
+                    border-radius: 5px;
+                    padding: 5px;
+                }
+            }
+        }
+
+        &:hover{
+            transform: scale(1.1);
+            -webkit-box-shadow:2px 4px 10px 1px rgba(0,0,0,0.47);
+            box-shadow:2px 4px 10px 1px rgba(201,201,201, 0.47);
+        }
+    }
+    .product:nth-child(1){
+        animation-name: fadeUp;
+        animation-duration: 1100ms;
+    }
+    .product:nth-child(2){
+        animation-name: fadeUp;
+        animation-duration: 1300ms;
+    }
+    .product:nth-child(3){
+        animation-name: fadeUp;
+        animation-duration: 1500ms;
+    }
+    .product:nth-child(4){
+        animation-name: fadeUp;
+        animation-duration: 1700ms;
+    }
+    .product:nth-child(5){
+        animation-name: fadeUp;
+        animation-duration: 1900ms;
+    }
+    .product:nth-child(6){
+        animation-name: fadeUp;
+        animation-duration: 2100ms;
+    }
+    .product:nth-child(7){
+        animation-name: fadeUp;
+        animation-duration: 2300ms;
+    }
+    .product:nth-child(8){
+        animation-name: fadeUp;
+        animation-duration: 2500ms;
+    }
+    .product:nth-child(9){
+        animation-name: fadeUp;
+        animation-duration: 2700ms;
+    }
+    .product:nth-child(10){
+        animation-name: fadeUp;
+        animation-duration: 2900ms;
+    }
+}
+
+
+.pagination{
+    margin-top: 60px;
+    height: 18px;
+    position: relative;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    font-weight: 500;
+    font-size: 25px;
+
+    .page_prev{
+        position: absolute;
+        width: 25px;
+        top: -8px;
+        left: 10px;
+        cursor: pointer;
+        transition: 200ms ease-in-out;
+        &:hover{
+            color:resource.$green-color;
+        }
+    }
+    .page_next{
+        position: absolute;
+        width: 25px;
+        height: 35px;
+        top: -8px;
+        right: 10px;
+        cursor: pointer;
+        transition: 200ms ease-in-out;
+        &:hover{
+            color: resource.$green-color;
+        }
+    }
+
+    .page_active{
+        padding: 2px 14px;
+        color: white;
+        border-radius: 10px;
+        background-color: resource.$green-color;
+    }
+
+    .page_num{
+        cursor: pointer;
+        &:hover {
+            color:resource.$green-color;
+            transition: 200ms ease-in-out;
+        }
+    }
+}

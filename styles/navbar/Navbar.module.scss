@@ -1,0 +1,105 @@
+@use '../resource.scss';
+
+@media screen and (max-width:500px) {
+    .navbar{
+        --navbar-padding: 0 0 0 10px;
+    }
+    .cabinet{
+        --notification-width:230px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .notification{
+        --notification-display:none;
+    }
+}
+
+.navbar{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height:50px;
+    padding:var(--navbar-padding);
+    background-color: rgba(255, 255, 255, 0.811);
+    z-index: 4;
+    animation-name: FadeNavbar;
+    animation-duration: 1s;
+
+    @keyframes FadeNavbar {
+        from{
+            transform: translateY(-100%);
+            opacity: 0;
+        };
+        to{
+            transform: translateY(0%);
+            opacity: 1;
+        }   
+    }
+
+    a{
+        text-decoration: none;
+        color: black;
+        transition: 200ms;
+        margin-top: 5px;
+
+        &:hover{
+            color: resource.$green-color;
+            text-decoration: underline;
+        }
+    }
+
+    section{
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        .notification{
+            margin-top: 5px;
+            position: relative;
+            display: var(--notification-display);
+            color:grey;
+            transition: 200ms;
+            cursor: pointer;
+            
+            sup{
+                position: absolute;
+                top: -5px;
+                right:-6px;
+                border-radius: 50%;
+                font-size: 14px;
+                padding: 0 0 2px 0;
+                text-align: center;
+                width: 15px;
+                height: 15px;
+                color: white;
+                background-color: resource.$green-color;
+            }
+
+            &:hover{
+                color:resource.$green-color;
+            }
+        }
+    
+        .cabinet{
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            height: 50px;
+            width: var(--notification-width);
+            color: white;
+            border-radius: 0 0 0 30px;
+            background-color: resource.$blue-color;
+            transition: 200ms;
+
+            &:hover{
+                background-color: resource.$green-color;
+            }
+        }
+    }
+}

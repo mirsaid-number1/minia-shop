@@ -1,0 +1,472 @@
+@use '../resource.scss';
+
+@media screen and (max-width:1300px) {
+    .container{
+        --container-margin:0 10px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .container{
+        --container-padding:0;
+        --container-margin: 0;
+    }
+}
+
+.product{
+    display: flex;
+    flex-direction: column;
+    gap:0;
+
+    .main{
+        display: flex;
+        gap: var(--container-padding,5);
+
+        .container{
+            height: auto;
+            width: 100%;
+            margin: var(--container-margin,10px);
+            padding: var(--container-padding,0);
+            background-color: resource.$light-grey-color;
+            border-radius: 5px;
+
+            .directory{
+                display: flex;
+                align-items: center;
+                padding: 2px;
+                font-size:14px;
+                animation-name: FadeOthers;
+                animation-duration: 1s;
+
+                .prev{
+                    color:lightgray;
+                    transition: 200ms;
+                    text-decoration: none;
+
+                    &:hover{
+                        color: resource.$green-color;
+                    }
+                }
+                .current{
+                    text-decoration: none;
+                    color:resource.$green-color;
+                    cursor: pointer;
+                }
+                .arrow{
+                    color:lightgrey;
+                    width: 15px;
+                }
+            }
+
+            .device_container{
+                height: auto;
+                width: 100%;
+                position: relative;
+                background-color: white;
+                border-radius: 15px;
+
+                h2{
+                    color:resource.$blue-color;
+                    font-weight: 500;
+                    padding: 20px;
+                    animation-name: FadeBottom;
+                    animation-duration: 1000ms;
+                }
+
+                .marketLogo{
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    width: 60px;
+                    height: 60px;
+                    top:-25px;
+                    right: 10px;
+                    background-color: resource.$light-red-color;
+                    animation-name: FadeOthers;
+                    animation-duration: 1500ms;
+                }
+
+                .aboutDevice{
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: center;
+
+                    .carusel{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: relative;
+                        flex:1;
+                        min-width: 200px;
+                        min-height: 240px;
+                        background-color: resource.$light-grey-color;
+                        margin: 0 20px 20px 20px;
+                        border-radius: 15px;
+                        padding: 20px;
+                        animation-name: FadeBottom;
+                        animation-duration: 1400ms;
+
+                        .carusel_card{
+                            background-color: white;
+                        }
+
+                        .carusel_labels{
+                            position: absolute;   
+                            display: flex;
+                            flex-direction: column;
+                            gap: 5px;
+                            left: 10px;
+                            top: 10px;
+                            animation-name: FadeRight;
+                            animation-duration: 1000ms;
+                            
+                            @mixin label($bg-color: DarkGray) {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 40px;
+                                height: 28px;
+                                border-radius: 10px;
+                                cursor: pointer;
+                                transition: 200ms ease-in-out;
+                                background-color: $bg-color;
+                                
+                                &:hover{
+                                    transform: scale(1.1);
+                                    box-shadow: 0 0 2px 2px $bg-color;
+                                }
+                            }
+
+                            .label_exchange {
+                                @include label(resource.$pink-color);
+                                animation-name: FadeRight;
+                                animation-duration: 900ms;
+                            }
+
+                            .label_surprise{
+                                @include label(resource.$light-purple-color);
+                                animation-name: FadeRight;
+                                animation-duration: 1000ms;
+                            }
+
+                            .label_greenPercent{
+                                @include label(resource.$light-green-color);
+                                animation-name: FadeRight;
+                                animation-duration: 1100ms;
+                            }
+
+                            .label_orangePercent{
+                                @include label(resource.$light-orange-color);
+                                animation-name: FadeRight;
+                                animation-duration: 1200ms;
+                            }
+                        }
+
+                    }
+                    .details_part{
+                        flex: 1;
+                        min-width: 300px;
+                        padding: 20px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 25px;
+
+                        .sectionOne{
+                            display: flex;
+                            flex-direction: column;
+                            gap: 5px;
+                            animation-name: FadeBottom;
+                            animation-duration: 1000ms;
+
+                            .header_desc{
+                                color: lightgray;
+                            }
+
+                            .header_val{
+                                font-weight: 500;
+                            }
+                        }
+
+                        .sectionTwo{
+                            display: flex;
+                            flex-direction: column;
+                            animation-name: FadeBottom;
+                            animation-duration: 1200ms;
+
+                            .surcharge{
+                                display: flex;
+                                justify-content: space-between;
+                            
+                                .surcharge_headings{
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 5px;
+
+                                    .header_desc{
+                                        color: lightgray;
+                                    }
+
+                                    .header_val{
+                                        font-weight: 500;
+                                    }
+                                }
+                                .only_surcharge{
+                                    display: flex;
+                                    align-items: center;
+                                    align-self: flex-end;
+                                    gap: 5px;
+
+                                    .surcharge_overall{
+                                        background-color: resource.$light-red-color;
+                                        font-weight: 500;
+                                        color: white;
+                                        padding: 5px;
+                                        border-radius: 10px;
+                                    }
+
+                                    .surcharge_longivity{
+                                        color: lightgray;
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+
+                            .longivity_set{
+                                margin-top: 10px;
+                                width: 100%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-around;
+
+                                .passive_long, .active_long{
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;  
+                                    height: 35px;
+                                    transition: 200ms ease-in-out;                                   
+                                    cursor: pointer;
+                                    flex: 1;
+                                    border: 1px solid resource.$green-color;
+                                }
+
+                                .passive_long{
+                                    color: resource.$green-color;
+                                }
+
+                                .active_long{
+                                    color:white;
+                                    background-color: resource.$green-color;
+                                }
+
+                                .passive_long:nth-child(1){
+                                    border-radius: 10px 0 0 10px;
+                                }
+
+                                .active_long:nth-child(1){
+                                    border-radius: 10px 0 0 10px;
+                                }
+
+                                .active_long:nth-child(4){
+                                    border-radius: 0 10px 10px 0;
+                                }
+
+                                .passive_long:nth-child(4){
+                                    border-radius: 0 10px 10px 0;
+                                }
+                                
+                            }
+                            .surcharge_value{
+                                text-align: center;
+                            }
+                        }
+
+                        .sectionThree{
+                            display: flex;
+                            flex-direction: column;
+                            gap: 5px;
+                            animation-name: FadeBottom;
+                            animation-duration: 1400ms;
+
+                            .header_desc{
+                                color: lightgray;
+                            }
+                            .header_text {
+                                font-weight: 350;
+                                font-size: 17px;
+                            }
+
+                            .continue{
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                color: resource.$green-color;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                .stocks{
+                    display: flex;
+                    flex-direction: column;
+                    padding: 0 20px 20px 20px;
+                    gap: 10px;
+
+                    h3{
+                        color: resource.$green-color;
+                    }
+
+                    .stock{
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 0 0 20px 0;
+                        border-bottom: 1px solid lightgray;
+
+                        .first_layer{
+                            display: flex;
+                            gap: 10px;
+
+                            @mixin label($bg-color: DarkGray) {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 40px;
+                                height: 28px;
+                                border-radius: 10px;
+                                cursor: pointer;
+                                transition: 200ms ease-in-out;
+                                background-color: $bg-color;
+                                
+                                &:hover{
+                                    transform: scale(1.1);
+                                    box-shadow: 0 0 2px 2px $bg-color;
+                                }
+                            }
+
+                            .label_exchange {
+                                @include label(resource.$pink-color);
+                            }
+
+                            .label_surprise{
+                                @include label(resource.$light-purple-color);
+                            }
+
+                            .label_greenPercent{
+                                @include label(resource.$light-green-color);
+                            }
+
+                            .label_orangePercent{
+                                @include label(resource.$light-orange-color);
+                            }
+
+                            .texts{
+                                .stock_text{
+                                    font-size: 16px;
+                                    font-weight: 500;
+                                    text-align: justify;
+                                }
+                                .stock_mini_text{
+                                    color: lightgray;
+                                }
+                            }
+                        }
+
+                        input[type=checkbox] {
+                            accent-color: resource.$green-color;
+                            text-indent: white;
+                            border-radius: 15px;
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
+                    .stock:nth-child(1){
+                        animation-name: FadeBottom;
+                        animation-duration: 1200ms;
+                    }
+                    .stock:nth-child(2){
+                        animation-name: FadeBottom;
+                        animation-duration: 1400ms;
+                    }
+                    .stock:nth-child(3){
+                        animation-name: FadeBottom;
+                        animation-duration: 1600ms;
+                    }
+                    .stock:nth-child(4){
+                        animation-name: FadeBottom;
+                        animation-duration: 1800ms;
+                    }
+                    .stock:nth-child(5){
+                        padding: 0 0 0 0;
+                        border-bottom: none;
+                        animation-name: FadeBottom;
+                        animation-duration: 2000ms;
+                    }
+                }
+
+                .add_card{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 20px;
+                    animation-name: FadeBottom;
+                    animation-duration: 2500ms;
+                    
+                    button{
+                        cursor: pointer;
+                        width: 100%;
+                        height: 45px;
+                        border: none;
+                        color: white;
+                        background-color: resource.$green-color;
+                        border-radius: 15px;
+                        font-weight: 700;
+                        transition: 200ms ease-in-out;
+
+                        &:hover{
+                            box-shadow: 0 0 4px 4px resource.$light-green-color;
+                        }
+                    }
+                }
+
+            }
+
+            @keyframes FadeOthers {
+                from{
+                    transform: translateX(100%);
+                    opacity:0;
+                };
+                to{
+                    transform: translateX(0%);
+                    opacity:1;
+                }
+            }
+
+            @keyframes FadeBottom {
+                from{
+                    transform: translateY(150%);
+                    opacity: 0;
+                };
+                to{
+                    transform: translateY(0%);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes FadeRight {
+                from {
+                    transform: translateX(-200%);
+                    opacity: 0;
+                };
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

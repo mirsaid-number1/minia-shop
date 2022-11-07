@@ -1,26 +1,19 @@
+
+:root {
+  --navbar-padding: 0 0 0 50px;
+  --notification-display: block;
+  --notification-width:300px;
+  --container-margin:0 75px 0 10px;
+  --sidebar-position:sticky;
+  --sidebar-top:0px;
+  --open-sidebar:none;
+  --container-padding:10px;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
 }

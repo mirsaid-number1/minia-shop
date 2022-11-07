@@ -1,0 +1,253 @@
+@use '../resource.scss';
+
+@media screen and (max-width:1300px) {
+    .container{
+        --container-margin:0 10px;
+    }
+}
+
+.orders{
+    display: flex;
+    flex-direction: column;
+    .main{
+        display: flex;
+        .container{
+            height: 90vh;
+            width: 100%;
+            margin: var(--container-margin,10px);
+            padding: 5px 10px;
+            background-color: resource.$light-grey-color;
+            border-radius: 5px 0 5px 0;
+
+            .directory{
+                display: flex;
+                align-items: center;
+                padding: 2px;
+                font-size:14px;
+                animation-name: FadeOthers;
+                animation-duration: 1s;
+
+                .prev{
+                    color:lightgray;
+                    transition: 200ms;
+                    text-decoration: none;
+
+                    &:hover{
+                        color: resource.$green-color;
+                    }
+                }
+                .current{
+                    text-decoration: none;
+                    color:resource.$green-color;
+                    cursor: pointer;
+                }
+                .arrow{
+                    color:lightgrey;
+                    width: 15px;
+                }
+            }
+
+            .card_field{
+                display: flex;
+                flex-direction:column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 90%;
+                background-color: white;
+                margin:5px;
+                border-radius: 15px;
+
+                a,h2{
+                    text-align: center;
+                    color: resource.$blue-color;
+                    text-decoration: none;
+                    font-weight: 400;
+                    animation-name: FadeBottom;
+                    animation-duration: 1000ms;
+                }
+
+                .card_groups,
+                .card_group,
+                .big_card, .little_card {
+                    aspect-ratio: 5 / 7;
+                    animation-name: FadeBottom;
+                    animation-duration: 1000ms;
+                }
+
+                .card_groups,
+                .card_group,
+                .big_card {  
+                    width: 30vmin;
+                }
+
+                .card_group {
+                    position: absolute;
+                    transition: transform 400ms ease;
+                }
+
+                .card_group[data-status="unknown"] {
+                    transform: scale(0);
+                    transition: none;
+                  }
+                  
+                  .card_group[data-status="active"] {
+                    transition-delay: 300ms;
+                  }
+                  
+                  .card_group[data-status="after"] {
+                    transform: translateX(50%) scale(0);
+                  }
+                  
+                  .card_group[data-status="before"] {
+                    transform: translateX(-50%) scale(0);
+                  }
+                  
+                  .card_group[data-status="becoming-active-from-after"] {
+                    transform: translateX(50%) scale(0);
+                    transition: none;
+                  }
+                  
+                  .card_group[data-status="becoming-active-from-before"] {
+                    transform: translateX(-50%) scale(0);
+                    transition: none;
+                  }
+
+                  .big_card, .little_card {
+                    background-color: rgba(255, 255, 255, 0.05);
+                    position: absolute;
+                    transition: transform 800ms cubic-bezier(.05,.43,.25,.95);
+                    
+                    background-position: center;
+                    background-size: cover;
+                  }
+
+                  .big_card {
+                    border-radius: 1vmin;
+                  }
+                  
+                  .little_card {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 12vmin;
+                    border-radius: 2vmin;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    box-shadow: -1vmin 1vmin 2vmin rgba(0, 0, 0, 0.25);
+                    pointer-events: none;
+                  }
+                  
+                  .big_card:nth-child(2) {
+                      background-image: url("../../images/phone1.jpg");
+                      transform: translateX(-10%) rotate(-1deg);
+                      animation-name: FadeBottom;
+                      animation-duration: 1000ms;
+                    }
+                    
+                    .big_card:nth-child(4) {
+                        background-image: url("../../images/phone2.jpg");
+                    transform: rotate(2deg);
+                    animation-name: FadeBottom;
+                    animation-duration: 1100ms;
+                  }
+                  
+                  .big_card:nth-child(6) {
+                      background-image: url("../../images/airpods1.png");
+                      transform: translateX(-6%) rotate(-3deg);
+                      animation-name: FadeBottom;
+                      animation-duration: 1200ms;
+                    }
+                    
+                    .big_card:nth-child(8) {
+                      background-image: url("../../images/phone3.jpg");
+                    transform: translate(10%, 3%) rotate(5deg);
+                    animation-name: FadeBottom;
+                    animation-duration: 1300ms;
+                  }
+                  
+                  
+                  .little_card:nth-child(1) {
+                    background-color: resource.$pink-color;
+                    animation-name: FadeBottom;
+                    animation-duration: 1400ms;
+                  }
+                  
+                  .little_card:nth-child(3) {
+                     background-color: resource.$light-purple-color;
+                     animation-name: FadeBottom;
+                     animation-duration: 1500ms;       
+                }
+                  
+                  .little_card:nth-child(5) {
+                    background-color: resource.$light-green-color;
+                    animation-name: FadeBottom;
+                    animation-duration: 1600ms;
+                  }
+                  
+                  .little_card:nth-child(7) {
+                    background-color: resource.$light-orange-color;
+                    animation-name: FadeBottom;
+                    animation-duration: 1700ms;
+                  }
+                  
+                  &:hover{
+                    
+                    h2,a{
+                        text-decoration: underline;
+                        z-index: 10;
+                    }
+
+                    .card_group > .card {  
+                        box-shadow: -2vmin 2vmin 3vmin rgba(0, 0, 0, 0.4);
+                      }
+                      
+                      .card_group > .big_card:nth-child(2) {
+                        transform: translate(-75%, 16%) rotate(-24deg);
+                      }
+                      
+                      .card_group > .big_card:nth-child(4) {
+                        transform: translate(-25%, 8%) rotate(-8deg);
+                      }
+                      
+                      .card_group > .big_card:nth-child(6) {
+                        transform: translate(25%, 8%) rotate(8deg);
+                      }
+                      
+                      .card_group > .big_card:nth-child(8) {
+                        transform: translate(75%, 16%) rotate(24deg);
+                      }
+                      
+                      .card_group > .little_card:nth-child(1) {
+                        transform: translate(200%, -160%) rotate(-15deg);
+                      }
+                      
+                      .card_group > .little_card:nth-child(3) {
+                        transform: translate(160%, 170%) rotate(15deg);
+                      }
+                      
+                      .card_group > .little_card:nth-child(5) {
+                        transform: translate(-200%, -170%) rotate(15deg);
+                      }
+                      
+                      .card_group > .little_card:nth-child(7) {
+                        transform: translate(-280%, 140%) rotate(-15deg);
+                      }
+                  }
+
+            }
+            @keyframes FadeBottom {
+                from{
+                    transform: translateY(100%);
+                    opacity:0;
+                };
+                to{
+                    transform: translateY(0%);
+                    opacity:1;
+                }
+            }
+        }
+    }
+
+}

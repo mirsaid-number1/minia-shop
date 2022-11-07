@@ -1,31 +1,28 @@
-import React, { useRef } from 'react'
-import style from '../styles/home/Home.module.scss';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import type { RootState } from '../store';
+import React from 'react'
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-// small images
+import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
+import Image from 'next/image';
+import Link from 'next/link';
+import style from '../styles/orders/Orders.module.scss';
 import exchange from '../images/exchange.png';
 import greenPercent from '../images/greenPercent.png';
 import orangePercent from '../images/orangePercent.png';
 import surprise from '../images/surprise.png';
 
-export default function Home() {
-  let count = useSelector((state:RootState) => state.counter.value);
-  let dispatch = useDispatch();
-  let numberRef = useRef<HTMLInputElement>(null);
+type Props = {}
 
+function orders({}: Props) {
   return (
-    <section className={style.home}>
-      <Navbar />
-      <main className={style.main}>
-        <Sidebar />
-        <div className={style.container}>
-          <span className={style.directory}><Link href={'/'} className={style.current}>Главная</Link></span>
-          <Link href={'/checkout'}>
+    <section className={style.orders}>
+        <Navbar />
+        <main className={style.main}>
+          <Sidebar />
+          <div className={style.container}>
+          <span className={style.directory}>
+            <Link href={'/'} className={style.prev}>Заявки</Link> <ArrowForwardIosRoundedIcon className={style.arrow}/> <Link href={'/checkout'} className={style.current}>Оформить заказ</Link> </span>
+
+            <Link href={'/checkout'}>
             <div className={style.card_field}>
               <h2>Перейти на страницу оформления заказа</h2>
               <div className={style.card_groups}>
@@ -109,9 +106,12 @@ export default function Home() {
                 </div>          
               </div>
             </div>
-          </Link>
-        </div>
-      </main>
+            </Link>
+          
+          </div>
+        </main>
     </section>
   )
 }
+
+export default orders
