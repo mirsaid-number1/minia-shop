@@ -83,7 +83,7 @@ function Product({}) {
             </div>
             <div className={style.aboutDevice}>
               <div className={style.carusel}>
-                    <Carousel enableAutoPlay={true} initialActiveIndex={0} autoPlaySpeed={15000} breakPoints={breakPoints}>
+                    <Carousel enableAutoPlay={true} initialActiveIndex={0} autoPlaySpeed={15000} breakPoints={breakPoints} showArrows={false}>
                         {product.imgsCollection.map((image,index) => (
                           <Item className={style.carusel_card} key={index}>
                             <Image src={image} alt="img" key={index}/>
